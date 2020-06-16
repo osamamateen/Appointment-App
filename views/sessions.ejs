@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <title>Sessions</title>
+  </head>
+  <body>
+    <br /><br /><br /><br /><br /><br />
+    <div class="container">
+      <table class="striped">
+        <tr>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th></th>
+        </tr>
+        <% sessions.forEach(function(session){%>
+        <tr>
+          <td><%= session.name %></td>
+          <td><%= session.contact %></td>
+          <td>
+            <%= session.date.toDateString()%>
+          </td>
+          <td><%= session.time %></td>
+          <td>
+            <form
+              method="POST"
+              action="/sessions/<%=session._id%>?_method=DELETE"
+            >
+              <input type="submit" value="Delete" />
+            </form>
+          </td>
+        </tr>
+        <%})%>
+      </table>
+
+      <br />
+      <br />
+      <a href="sessions/new" class="waves-effect waves-light btn"
+        >Create new appointment</a
+      >
+    </div>
+  </body>
+</html>
